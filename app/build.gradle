@@ -1,0 +1,127 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'auto'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.vinctor.autodimens"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:26.+'
+}
+
+//project.task('local')<< {
+//    println "|"
+//    println "|"
+//    println "|"
+//    println "|"
+//    println "|"
+//
+//    def standard_w = 1080
+//    def standard_h = 1920
+//
+//    final String dimen_w = "dimen_w.xml"
+//    final String dimen_h = "dimen_h.xml"
+//    def dimens = []
+//    dimens.add([320, 480])
+//    dimens.add([480, 800])
+//    dimens.add([480, 854])
+//    dimens.add([540, 888])
+//    dimens.add([600, 1024])
+//    dimens.add([720, 1184])
+//    dimens.add([720, 1196])
+//    dimens.add([720, 1280])
+//    dimens.add([768, 1024])
+//    dimens.add([768, 1280])
+//    dimens.add([800, 1280])
+//    dimens.add([1080, 1812])
+//    dimens.add([1080, 1920])
+//    dimens.add([1440, 2560])
+//
+//    File routerFolder = FileUtils.join(project.projectDir, "src", "main", "res")
+//    if (routerFolder.exists()) {
+//        dimens.each { dimen ->
+//            File valuesFile = FileUtils.join(routerFolder, String.format("values-%dx%d", dimen[1], dimen[0]));
+//            if (!valuesFile.exists()) valuesFile.mkdir();
+//            File dimen_w_File = FileUtils.join(valuesFile, dimen_w)
+//            File dimen_h_File = FileUtils.join(valuesFile, dimen_h)
+//            creatDimens(dimen_w_File)
+//            creatDimens(dimen_h_File)
+//            setDimens(dimen_w_File, dimen[0], standard_w, "w")//宽
+//            setDimens(dimen_h_File, dimen[1], standard_h, "h")//高
+//            println "file : " + valuesFile.getName() + " generate succeed!"
+//        }
+//    }
+//
+//    println project.getName()
+//    println "Hello gradle plugin"
+//
+//    println "|"
+//    println "|"
+//    println "|"
+//    println "|"
+//    println "|"
+//}
+//
+//def creatDimens(File file) {
+//    if (!file.exists())
+//        return file.createNewFile()
+//}
+///**
+// *
+// * @param file
+// * @param dimen 当前
+// * @param standard 基准`
+// * @param header 头
+// * @return
+// */
+//def setDimens(File file, dimen, standard, header) {
+//    def warningMsg = "generate dimens,do not edit!(自动生成的dimen,请不要编辑)";
+//    //set
+//    StringBuilder builder = new StringBuilder();
+//    builder.append("<!--" + warningMsg + "-->\r\n");
+//    builder.append("<resources>\r\n");
+//    for (int i = 0; i < 2000; i++) {
+//        builder.append(getDimenXml(i, dimen, standard, header) + "\r\n")
+//    }
+//    builder.append("</resources>\r\n");
+//    builder.append("<!--" + warningMsg + "-->\r\n");
+//
+//    String encoding = "UTF-8";
+//    OutputStreamWriter outstream = new OutputStreamWriter(new FileOutputStream(file.getAbsolutePath()), encoding);
+//    PrintWriter pw = new PrintWriter(outstream)
+//    pw.write(builder.toString())
+//    pw.flush()
+//    pw.close()
+//}
+//
+//def getDimenXml(current, dimen, standard, header) {
+//    int temp = current * dimen;
+//    int result;
+//    if (temp % standard == 0) {
+//        result = temp / standard;
+//    } else {
+//        result = temp / standard + 1;
+//    }
+//    return String.format("<dimen name=\"%s%d\">%dpx</dimen>", header, current, result);
+//}
