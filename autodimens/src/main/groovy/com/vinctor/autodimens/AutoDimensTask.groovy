@@ -9,29 +9,43 @@ public class AutoDimensTask extends DefaultTask {
 
     @Input
     File projectFile;
+    @Input
+    PropertyFinder finder
+
+    int maxPx = 100;
 
     @TaskAction
     void action() {
+        int[] standard = finder.getStandard()
+        maxPx = finder.getMaxPx()
+        int[] extraDimens = finder.getExtraDimens()
 
-        def standard_w = 768
-        def standard_h = 1280
+        println extraDimens
+
+        def standard_w = standard[0]
+        def standard_h = standard[1]
 
         final String dimen_w_fileName = "dimen_w.xml"
         final String dimen_h_fileName = "dimen_h.xml"
-        def dimens = []
 
+
+        def dimens = []
         dimens.add([480, 800])
         dimens.add([480, 854])
         dimens.add([540, 960])
+        dimens.add([768, 1024])
         dimens.add([720, 1184])
         dimens.add([720, 1280])
-        dimens.add([768, 1024])
-//        dimens.add([768, 1280])
         dimens.add([800, 1280])
-        dimens.add([1080, 1812])
         dimens.add([1080, 1776])
+        dimens.add([1080, 1812])
         dimens.add([1080, 1920])
         dimens.add([1440, 2560])
+        extraDimens.each {
+            dimen ->
+                dimens.add(dimen[0],dimen[1])
+        }
+
 
         File routerFolder = FileUtils.join(projectFile, "src", "main", "res")
         if (routerFolder.exists()) {
@@ -78,7 +92,7 @@ public class AutoDimensTask extends DefaultTask {
         StringBuilder builder = new StringBuilder();
         builder.append("<!--" + warningMsg + "-->\r\n");
         builder.append("<resources>\r\n");
-        for (int i = 0; i < 2000; i++) {
+        for (int i = 0; i < maxPx; i++) {
             builder.append(getDimenXml(i, dimen, standard, header) + "\r\n")
         }
         builder.append("</resources>\r\n");
