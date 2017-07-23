@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AutoDimens.iml" filepath="$PROJECT_DIR$/AutoDimens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AutoDimens.iml" filepath="$PROJECT_DIR$/AutoDimens.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autodimens/autodimens.iml" filepath="$PROJECT_DIR$/autodimens/autodimens.iml" />
       <module fileurl="file://$PROJECT_DIR$/autodimens/autodimens.iml" filepath="$PROJECT_DIR$/autodimens/autodimens.iml" />
       <module fileurl="file://$PROJECT_DIR$/autodimens/myplugin.iml" filepath="$PROJECT_DIR$/autodimens/myplugin.iml" />
     </modules>
