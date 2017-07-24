@@ -22,7 +22,7 @@
 
 ### 1.[(demo)](https://github.com/Vinctor/AutoDimens/blob/master/build.gradle)在项目根目录中```build.gradle```文件中添加
 
->classpath: classpath "com.vinctor:autoDimens:x.y.z"
+>classpath "com.vinctor:autoDimens:x.y.z"
 
  ![Download](https://api.bintray.com/packages/xcht1209/maven/autoDimens/images/download.svg)
  
