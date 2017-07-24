@@ -91,4 +91,4 @@ dimen的最大值,默认为```100```
 
 在你的```application```中找到:```Tasks>other>autoDimens```,双击执行```autoDimens```即可
 
-![](screenshot.gradle.png)
+![](screenshot/gradle.png)
