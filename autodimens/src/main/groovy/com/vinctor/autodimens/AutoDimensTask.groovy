@@ -32,10 +32,14 @@ public class AutoDimensTask extends DefaultTask {
 
 
         def dimens = []
+        dimens.add([320, 480])
         dimens.add([480, 800])
         dimens.add([480, 854])
+        dimens.add([540, 888])
         dimens.add([540, 960])
         dimens.add([768, 1024])
+        dimens.add([768, 1280])
+        dimens.add([720, 1280])
         dimens.add([720, 1184])
         dimens.add([720, 1280])
         dimens.add([800, 1280])
@@ -43,6 +47,7 @@ public class AutoDimensTask extends DefaultTask {
         dimens.add([1080, 1812])
         dimens.add([1080, 1920])
         dimens.add([1440, 2560])
+
 
         extraDimens.each {
             dimen ->
@@ -79,7 +84,7 @@ public class AutoDimensTask extends DefaultTask {
                 setDimens(dimen_h_File, dimenFactH, standard_h, "h")//高
 
                 File warning = FileUtils.join(valuesFile, add_file_warning)
-                setWaringContent(warning);
+                setWaringContent(warning, dimen);
                 println "DimenFile : " + valuesFile.getName() + " generate succeed!"
             }
         }
@@ -138,8 +143,8 @@ public class AutoDimensTask extends DefaultTask {
         return String.format("<dimen name=\"%s%d\">%dpx</dimen>", header, current, result);
     }
 
-    def setWaringContent(warning) {
-        def warningMsg = "不要在自动生成的文件夹(values-xxx)内添加或修改任何文件!否则,误删后果自负!";
+    def setWaringContent(warning, dimen) {
+        def warningMsg = dimen[1] + "x" + dimen[0] + "-不要在自动生成的文件夹(values - xxx) 内添加或修改任何文件 !否则, 误删后果自负!";
         //set
         StringBuilder builder = new StringBuilder();
         builder.append("<resources>\r\n");

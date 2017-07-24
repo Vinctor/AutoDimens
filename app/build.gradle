@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'auto'
+apply plugin: 'autodimens'
+
 
 android {
     compileSdkVersion 26
@@ -30,10 +31,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
 }
 
-ext{
-    maxPx=1000
-    standard=[1440,2560]
-    extra=[[100,100],[200,200],[500,500]]
-    useDeviceSize=true
+ext {
+    maxPx = 2000
+    standard = [1080, 1920]
+    extra = [[768, 1280]]
+    useDeviceSize = false
 }
 

@@ -9,7 +9,13 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.vinctor.plugin:autodimens:1.0.0'
+        classpath 'com.novoda:bintray-release:0.4.0'
+
+        if (isTestMode.toBoolean()) {
+            classpath 'com.vinctor.plugin:autodimens:1.0.0'
+        } else {
+            classpath "com.vinctor:autoDimens:+"
+        }
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -28,4 +34,12 @@ tasks.withType(JavaCompile) {
 }
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    userOrg = 'xcht1209'
+    groupId = 'com.vinctor'
+    publishVersion = '0.0.4'
+    website = 'https://github.com/Vinctor/AutoDimens'
+    licences = ['Apache-2.0']
 }

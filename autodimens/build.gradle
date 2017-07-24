@@ -1,11 +1,11 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
+apply plugin: 'bintray-release'
 
 dependencies {
     compile gradleApi()
     compile localGroovy()
     compile 'com.android.tools.build:gradle:2.3.3'
-    compile 'com.google.code.gson:gson:2.8.1'
 }
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
@@ -21,4 +21,14 @@ uploadArchives {
             repository(url: uri('../repo'))
         }
     }
+}
+
+publish {
+    artifactId = 'autoDimens'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    publishVersion = rootProject.publishVersion
+    desc = rootProject.description
+    website = rootProject.website
+    licences = rootProject.licences
 }

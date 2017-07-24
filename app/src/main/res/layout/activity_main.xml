@@ -11,10 +11,48 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/w540"
+                android:layout_height="@dimen/h960"
+                android:background="#6286C0"
+                android:gravity="center"
+                android:text="540*960"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="@dimen/w540"
+                android:layout_height="@dimen/h480"
+                android:layout_gravity="start"
+                android:background="#DE5347"
+                android:gravity="center"
+                android:text="540*480"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
         <TextView
-            android:layout_width="@dimen/w384"
-            android:layout_height="@dimen/w640"
-            android:background="#ff8800"
-            android:text="Hello World!" />
+            android:layout_width="@dimen/w810"
+            android:layout_height="@dimen/h150"
+            android:layout_gravity="start"
+            android:background="#DE5347"
+            android:gravity="center"
+            android:text="810*150__textSize=40px"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/h40" />
+
+        <TextView
+            android:layout_width="@dimen/w810"
+            android:layout_height="@dimen/h150"
+            android:layout_gravity="start"
+            android:background="#6286C0"
+            android:gravity="center"
+            android:text="810*150__textSize=60px"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/h60" />
+
     </LinearLayout>
 </ScrollView>
