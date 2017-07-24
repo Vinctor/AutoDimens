@@ -14,19 +14,21 @@ public class AutoDimensTask extends DefaultTask {
 
     int maxPx = 100;
 
+    final String dimen_w_fileName = "dimen_w.xml"
+    final String dimen_h_fileName = "dimen_h.xml"
+    final String add_file_warning = "do-not-add-any-file.xml"
+
     @TaskAction
     void action() {
-        int[] standard = finder.getStandard()
+        ArrayList<Integer> standard = finder.getStandard()
         maxPx = finder.getMaxPx()
-        int[] extraDimens = finder.getExtraDimens()
-
-        println extraDimens
+        ArrayList extraDimens = finder.getExtraDimens()
+        boolean useDeviceSize = finder.getUseDeviceSize()//true包括虚拟键
+        println((useDeviceSize ? "" : "不") + "包括虚拟键高度")
+        printf "基准:w=%dpx,h=%dpx\r\n", standard
 
         def standard_w = standard[0]
         def standard_h = standard[1]
-
-        final String dimen_w_fileName = "dimen_w.xml"
-        final String dimen_h_fileName = "dimen_h.xml"
 
 
         def dimens = []
@@ -41,16 +43,32 @@ public class AutoDimensTask extends DefaultTask {
         dimens.add([1080, 1812])
         dimens.add([1080, 1920])
         dimens.add([1440, 2560])
+
         extraDimens.each {
             dimen ->
-                dimens.add(dimen[0],dimen[1])
+                if (dimen[0] && dimen[1]) {
+                    printf "新values:w=%d,h=%d\r\n", dimen
+                    dimens.add([dimen[0], dimen[1]])
+                }
         }
 
+        float scale = 0.9f
 
         File routerFolder = FileUtils.join(projectFile, "src", "main", "res")
         if (routerFolder.exists()) {
             dimens.each { dimen ->
-                int dimenFactH = dimen[1] * 0.9
+                int otherH = 0
+                int dimenFactH = 0//实际高度
+                if (!useDeviceSize) {//不包含虚拟键
+                    dimenFactH = dimen[1] * scale
+                    otherH = dimen[1]
+                } else {//包含虚拟键
+                    dimenFactH = dimen[1]
+                    otherH = dimen[1] * scale
+                }
+                //delete other values
+                deleteOther(routerFolder, dimen[0], otherH)
+
                 File valuesFile = FileUtils.join(routerFolder, String.format("values-%dx%d", dimenFactH, dimen[0]));
                 if (!valuesFile.exists()) valuesFile.mkdir();
                 File dimen_w_File = FileUtils.join(valuesFile, dimen_w_fileName)
@@ -59,6 +77,9 @@ public class AutoDimensTask extends DefaultTask {
                 creatDimens(dimen_h_File)
                 setDimens(dimen_w_File, dimen[0], standard_w, "w")//宽
                 setDimens(dimen_h_File, dimenFactH, standard_h, "h")//高
+
+                File warning = FileUtils.join(valuesFile, add_file_warning)
+                setWaringContent(warning);
                 println "DimenFile : " + valuesFile.getName() + " generate succeed!"
             }
         }
@@ -92,7 +113,7 @@ public class AutoDimensTask extends DefaultTask {
         StringBuilder builder = new StringBuilder();
         builder.append("<!--" + warningMsg + "-->\r\n");
         builder.append("<resources>\r\n");
-        for (int i = 0; i < maxPx; i++) {
+        for (int i = 0; i <= maxPx; i++) {
             builder.append(getDimenXml(i, dimen, standard, header) + "\r\n")
         }
         builder.append("</resources>\r\n");
@@ -115,5 +136,35 @@ public class AutoDimensTask extends DefaultTask {
             result = temp / standard + 1;
         }
         return String.format("<dimen name=\"%s%d\">%dpx</dimen>", header, current, result);
+    }
+
+    def setWaringContent(warning) {
+        def warningMsg = "不要在自动生成的文件夹(values-xxx)内添加或修改任何文件!否则,误删后果自负!";
+        //set
+        StringBuilder builder = new StringBuilder();
+        builder.append("<resources>\r\n");
+        builder.append("<!--" + warningMsg + "-->\r\n");
+        builder.append("</resources>\r\n");
+
+        String encoding = "UTF-8";
+        OutputStreamWriter outstream = new OutputStreamWriter(new FileOutputStream(warning.getAbsolutePath()), encoding);
+        PrintWriter pw = new PrintWriter(outstream)
+        pw.write(builder.toString())
+        pw.flush()
+        pw.close()
+    }
+
+    def deleteOther(routerFolder, width, height) {
+        File valuesFile = FileUtils.join(routerFolder, String.format("values-%dx%d", height, width));
+
+        File dimen_w_File = FileUtils.join(valuesFile, dimen_w_fileName)
+        File dimen_h_File = FileUtils.join(valuesFile, dimen_h_fileName)
+        File warinFile = FileUtils.join(valuesFile, add_file_warning)
+
+        dimen_w_File.delete()
+        dimen_h_File.delete()
+        warinFile.delete()
+
+        valuesFile.delete()
     }
 }

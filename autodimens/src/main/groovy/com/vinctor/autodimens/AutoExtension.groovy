@@ -6,5 +6,7 @@ class AutoExtension {
 
     int[] standard = [1080, 1920];
 
-    def extraDimens = [];
+    def extraDimens = [[]];
+
+    boolean useDeviceSize = false;
 }

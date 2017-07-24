@@ -17,27 +17,31 @@ class PropertyFinder {
     }
 
     def getStandard() {
-        getIntArray(project, 'standard', extension.standard)
+        getList(project, 'standard', extension.standard)
     }
 
     def getExtraDimens() {
-        getList(project, 'extraDimens', extension.extraDimens)
+        getIntList(project, 'extra', extension.extraDimens)
+    }
+
+    def getUseDeviceSize() {
+        getBoolean(project, 'useDeviceSize', extension.useDeviceSize)
     }
 
     private int getInteger(Project project, String propertyName, int defaultValue) {
-        project.hasProperty(propertyName) ? Integer.parseInt(project.getProperty(propertyName)) : defaultValue
-    }
-
-    private List getList(Project project, String propertyName, defaultValue) {
         project.hasProperty(propertyName) ? project.getProperty(propertyName) : defaultValue
     }
 
-    private int[] getIntArray(Project project, String propertyName, defaultValue) {
+    def getIntList(Project project, String propertyName, defaultValue) {
+        project.hasProperty(propertyName) ? project.getProperty(propertyName) : defaultValue
+    }
+
+    private ArrayList getList(Project project, String propertyName, defaultValue) {
         project.hasProperty(propertyName) ? project.getProperty(propertyName) : defaultValue
     }
 
     private boolean getBoolean(Project project, String propertyName, boolean defaultValue) {
-        project.hasProperty(propertyName) ? Boolean.parseBoolean(project.getProperty(propertyName)) : defaultValue
+        project.hasProperty(propertyName) ? Boolean.valueOf(project.getProperty(propertyName)) : defaultValue
     }
 
 }
