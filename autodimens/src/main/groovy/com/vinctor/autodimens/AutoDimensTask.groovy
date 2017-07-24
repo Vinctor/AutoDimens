@@ -32,21 +32,21 @@ public class AutoDimensTask extends DefaultTask {
 
 
         def dimens = []
-        dimens.add([320, 480])
-        dimens.add([480, 800])
-        dimens.add([480, 854])
-        dimens.add([540, 888])
-        dimens.add([540, 960])
-        dimens.add([768, 1024])
-        dimens.add([768, 1280])
-        dimens.add([720, 1280])
-        dimens.add([720, 1184])
-        dimens.add([720, 1280])
-        dimens.add([800, 1280])
-        dimens.add([1080, 1776])
-        dimens.add([1080, 1812])
-        dimens.add([1080, 1920])
-        dimens.add([1440, 2560])
+        [320, 480]
+        [480, 800]
+        [480, 854]
+        [540, 888]
+        [540, 960]
+        [768, 1024]
+        [768, 1280]
+        [720, 1280]
+        [720, 1184]
+        [720, 1280]
+        [800, 1280]
+        [1080, 1776]
+        [1080, 1812]
+        [1080, 1920]
+        [1440, 2560]
 
 
         extraDimens.each {
