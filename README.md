@@ -99,4 +99,4 @@ dimen的最大值,默认为```100```
 
 生成的```values```文件如下:
 
-![](screenshot/before.png)![](screenshot/after.png)
+![](screenshot/befor.png)![](screenshot/after.png)
