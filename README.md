@@ -89,6 +89,14 @@ dimen的最大值,默认为```100```
 
 方法二:找到```Gradle```选项卡
 
-在你的```application```中找到:```Tasks>other>autoDimens```,双击执行```autoDimens```即可
+在你的```application```中找到:```Tasks>other>autoDimens```,双击执行```autoDimens```即可, 如下:
 
 ![](screenshot/gradle.png)
+
+执行后日志如下:
+
+![](screenshot/build.jpg)
+
+生成的```values```文件如下:
+
+![](screenshot/before.png)![](screenshot/after.png)
