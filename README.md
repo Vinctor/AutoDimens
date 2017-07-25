@@ -39,7 +39,6 @@
          extra = [[768, 1280]]
          useDeviceSize = false
      }
-     
 #### maxPx
 
 dimen的最大值,默认为```100```
