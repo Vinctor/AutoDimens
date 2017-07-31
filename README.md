@@ -22,7 +22,7 @@
 
 ### 1.[(demo)](https://github.com/Vinctor/AutoDimens/blob/master/build.gradle)在项目根目录中```build.gradle```文件中添加
 
->classpath: classpath "com.vinctor:autoDimens:x.y.z"
+>classpath "com.vinctor:autoDimens:x.y.z"
 
  ![Download](https://api.bintray.com/packages/xcht1209/maven/autoDimens/images/download.svg)
  
@@ -39,7 +39,6 @@
          extra = [[768, 1280]]
          useDeviceSize = false
      }
-     
 #### maxPx
 
 dimen的最大值,默认为```100```
@@ -89,6 +88,14 @@ dimen的最大值,默认为```100```
 
 方法二:找到```Gradle```选项卡
 
-在你的```application```中找到:```Tasks>other>autoDimens```,双击执行```autoDimens```即可
+在你的```application```中找到:```Tasks>other>autoDimens```,双击执行```autoDimens```即可, 如下:
 
 ![](screenshot/gradle.png)
+
+执行后日志如下:
+
+![](screenshot/build.jpg)
+
+生成的```values```文件如下:
+
+![](screenshot/befor.png)![](screenshot/after.png)
