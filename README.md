@@ -24,7 +24,7 @@
 
 >classpath "com.vinctor:autoDimens:x.y.z"
 
- ![Download](https://api.bintray.com/packages/xcht1209/maven/autoDimens/images/download.svg)
+其中x.y.z为 ![Download](https://api.bintray.com/packages/xcht1209/maven/autoDimens/images/download.svg)
  
 ### 2.在```applicaion```module中添加
 
