@@ -103,5 +103,7 @@ false:不使用全屏高度,排除虚拟键
 
 ![](screenshot/befor.png)![](screenshot/after.png)
 
+
 附:2017年友盟机型统计情况:
+
 ![](screenshot/befor.png)![](files/umeng.png)
