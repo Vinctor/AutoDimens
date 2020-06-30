@@ -1,4 +1,4 @@
-# AutoDimens  ![Download](https://api.bintray.com/packages/xcht1209/maven/autoDimens/images/download.svg)
+# AutoDimens(@Deprecated)  ![Download](https://api.bintray.com/packages/xcht1209/maven/autoDimens/images/download.svg)
 布局适配  自动生成&lt;values-heightxwidth>的插件
 
 ## 预览
